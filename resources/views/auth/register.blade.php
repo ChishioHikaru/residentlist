@@ -31,6 +31,9 @@
 
                 {!! Form::submit('登録', ['class' => 'btn btn-primary btn-block']) !!}
             {!! Form::close() !!}
+            
+            {{-- ログインページへのリンク --}}
+            <p class="mt-2">アカウントをお持ちの方はこちらから {!! link_to_route('login', 'ログイン！') !!}</p>
         </div>
     </div>
 @endsection
