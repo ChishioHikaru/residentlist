@@ -19,7 +19,7 @@ class ResidentsController extends Controller
         $data = [];
         if (\Auth::check()) {
             $user = \Auth::user();
-            $residents = $user->residents()->orderBy('created_at', 'desc')->paginate(10);
+            $residents = $user->residents()->orderBy('created_at')->paginate(10);
             
             $data = [
                 'residents' => $residents,
@@ -51,21 +51,20 @@ class ResidentsController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'tenant_number, 8' => 'required|max:8',
-            'name' => 'required|max:20',
-            'tel, 11' => 'required|max:11',
-            'content' => 'required|max:255',
+            'tenant_number' => 'required|max:8',
+            'resident_name' => 'required|max:20',
+            'tel' => 'required|max:14',
         ]);
         
         
         $request->user()->residents()->create([
-            'tenant_number, 8' => $request->tenant_number,
-            'name' => $request->name,
-            'tel, 11' => $request->tel,
+            'tenant_number' => $request->tenant_number,
+            'resident_name' => $request->resident_name,
+            'tel' => $request->tel,
             'content' => $request->content,
         ]);
 
-        return redirect('/tasks');
+        return redirect('/residents');
     }
     
     /**
@@ -118,15 +117,14 @@ class ResidentsController extends Controller
     {
    
         $request->validate([
-            'tenant_number, 8' => 'required|max:8',
-            'name' => 'required|max:20',
-            'tel, 11' => 'required|max:11',
-            'content' => 'required|max:255',
+            'tenant_number' => 'required|max:8',
+            'resident_name' => 'required|max:20',
+            'tel' => 'required|max:14',
         ]);
         
-        $resident = Task::findOrFail($id);
+        $resident = Resident::findOrFail($id);
         $resident->tenant_number = $request->tenant_number;
-        $resident->name = $request->name;
+        $resident->resident_name = $request->resident_name;
         $resident->tel = $request->tel;
         $resident->content = $request->content;
         $resident->save();

@@ -16,10 +16,10 @@ class CreateResidentsTable extends Migration
         Schema::create('residents', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id');
-            $table->string('tenant_number, 8');
-            $table->string('name');
-            $table->string('tel, 11');
-            $table->string('content');
+            $table->string('tenant_number');
+            $table->string('resident_name');
+            $table->string('tel');
+            $table->string('content')->nullable();
             $table->timestamps();
             
             // 外部キー制約

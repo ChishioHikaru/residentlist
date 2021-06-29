@@ -2,26 +2,34 @@
 
 @section('content')
 
-<h1>id = {{ $task->id }} のタスク詳細ページ</h1>
+<h1>{{ $resident->resident_name }} さんの詳細ページ</h1>
 
     <table class="table table-bordered">
         <tr>
-            <th>id</th>
-            <td>{{ $task->id }}</td>
+            <th>ID</th>
+            <td>{{ $resident->id }}</td>
         </tr>
         <tr>
-            <th>タスク</th>
-            <td>{{ $task->content }}</td>
+            <th>テナントNo.</th>
+            <td>{{ $resident->tenant_number }}</td>
         </tr>
         <tr>
-            <th>status</th>
-            <td>{{ $task->status }}</td>
+            <th>名前</th>
+            <td>{{ $resident->resident_name }}</td>
+        </tr>
+        <tr>
+            <th>電話番号</th>
+            <td>{{ $resident->tel }}</td>
+        </tr>
+        <tr>
+            <th>備考</th>
+            <td>{{ $resident->content }}</td>
         </tr>
     </table>
 
-    {!! link_to_route('tasks.edit', 'このタスクを編集', ['task' => $task->id], ['class' => 'btn btn-light']) !!}
-    
-    {!! Form::model($task, ['route' => ['tasks.destroy', $task->id], 'method' => 'delete']) !!}
+    {!! link_to_route('residents.edit', 'この入居者を編集', ['resident' => $resident->id], ['class' => 'btn btn-light']) !!}
+    <br></br>
+    {!! Form::model($resident, ['route' => ['residents.destroy', $resident->id], 'method' => 'delete']) !!}
         {!! Form::submit('削除', ['class' => 'btn btn-danger']) !!}
     {!! Form::close() !!}
     

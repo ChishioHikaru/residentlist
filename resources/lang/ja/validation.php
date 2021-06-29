@@ -152,6 +152,10 @@ return [
      'name' => 'ユーザー名',
      'email' => 'メールアドレス',
      'password' => 'パスワード',
+     'resident_name' => '名前',
+     'tenant_number' => 'テナントNo.',
+     'tel' => '電話番号',
+     'content' => '備考',
     ],
     
 ];
