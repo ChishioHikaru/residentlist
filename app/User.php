@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'token', 'avatar',
     ];
 
     /**
@@ -37,10 +37,16 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
     
-    
+    // 入居者一覧を取得するためのメソッド
     public function residents()
     {
         return $this->hasMany(Resident::class);
+    }
+    
+    // 滞納者一覧を取得するためのメソッド
+    public function delinquents()
+    {
+        return $this->hasMany(Delinquent::class);
     }
     
     
@@ -48,4 +54,18 @@ class User extends Authenticatable
     {
         $this->loadCount('residents');
     }
+    
+    
+    public function delinquent($is_delinquented)
+    {
+        
+    }
+    
+    
+    public function undelinquent($is_delinquented)
+    {
+       
+    }
+    
+    
 }

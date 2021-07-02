@@ -12,17 +12,16 @@
             <ul class="navbar-nav">
                  @if (Auth::check())
                     {{-- 入居者一覧ページへのリンク --}}
-                    <li class="nav-item"><a href="#" class="nav-link">入居者一覧</a></li>
+                    <li class="nav-item">{!! link_to_route('residents.index', '入居者一覧', [], ['class' => 'nav-link']) !!}</li>
+                    {{-- 滞納者一覧ページへのリンク --}}
+                    <li class="nav-item-item">{!! link_to_route('residents.delinquents', '滞納者一覧',[], ['class' => 'nav-link']) !!}</li>
                     <li class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">{{ Auth::user()->name }}</a>
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">{{ Auth::user()->name }}をログアウト</a>
                         <ul class="dropdown-menu dropdown-menu-right">
-                            {{-- 滞納者一覧ページへのリンク --}}
-                            <li class="dropdown-item"><a href="#">滞納者一覧</a></li>
-                            <li class="dropdown-divider"></li>
                             {{-- ログアウトへのリンク --}}
-                            <li class="dropdown-item">{!! link_to_route('logout.get', 'Logout') !!}</li>
+                            <li class="dropdown-item">{!! link_to_route('logout.get', 'ログアウト') !!}</li>
                         </ul>
-                    </li>
+                    //</li>
                 @else
                     {{-- ユーザ登録ページへのリンク --}}
                     <li class="nav-item">{!! link_to_route('signup.get', 'ユーザー登録', [], ['class' => 'nav-link']) !!}</li>

@@ -2,7 +2,7 @@
 
 @section('content')
         
-    <h1>入居者一覧</h1>
+    <h1>滞納者一覧</h1>
     <br>
 
     @if (count($residents) > 0)
@@ -16,7 +16,6 @@
                     <th>電話番号</th>
                     <th>備考</th>
                 </tr>
-                
             </thead>
             <tbody>
                 @foreach ($residents as $resident)
@@ -38,8 +37,6 @@
         </table>
     @endif
     
-    {!! link_to_route('residents.create', '入居者の登録', [], ['class' => 'btn btn-primary']) !!}
-    <br></br>
     {{ $residents->links() }}
 
 @endsection

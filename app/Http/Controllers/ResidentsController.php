@@ -149,4 +149,40 @@ class ResidentsController extends Controller
         return redirect('/');
         
     }
+    
+    
+    public function delinquents()
+    {
+        $data = [];
+        
+            $user = \Auth::user();
+            $delinquents = $user->residents()->where('is_delinquented', true)->orderBy('created_at')->paginate(10);
+            
+            $data = [
+                'residents' => $delinquents,
+                ];
+        
+        return view('residents.delinquents', $data);
+    }
+    
+    
+    
+    public function delinquent($id)
+    {
+        $resident = Resident::findOrFail($id);
+        $resident->is_delinquented = true;
+        $resident->save();
+        
+        return redirect('/');
+    }
+    
+    
+    public function undelinquent($id)
+    {
+        $resident = Resident::findOrFail($id);
+        $resident->is_delinquented = false;
+        $resident->save();
+        
+        return redirect('/');
+    }
 }
