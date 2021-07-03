@@ -183,6 +183,6 @@ class ResidentsController extends Controller
         $resident->is_delinquented = false;
         $resident->save();
         
-        return redirect('/');
+        return redirect('/delinquents');
     }
 }

@@ -46,7 +46,7 @@ class User extends Authenticatable
     // 滞納者一覧を取得するためのメソッド
     public function delinquents()
     {
-        return $this->hasMany(Delinquent::class);
+        return $this->hasMany(Resident::class);
     }
     
     
@@ -56,16 +56,22 @@ class User extends Authenticatable
     }
     
     
-    public function delinquent($is_delinquented)
+    // 滞納者かどうかを確認するためのメソッド
+    public function is_delinquented($id)
     {
-        
+        // ここでデータベースから滞納者かどうかを取得する
+        // 複数条件文
+        $exists = $this->delinquents()
+                        ->where('id', $id)
+                        ->where('is_delinquented', true)
+                        ->exists();
+
+        // 滞納者かどうかチェック
+        if ($exists) {
+            return true;
+        } else {
+            return false;
+        }
     }
-    
-    
-    public function undelinquent($is_delinquented)
-    {
-       
-    }
-    
     
 }

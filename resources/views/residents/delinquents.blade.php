@@ -9,7 +9,7 @@
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th>支払い状況</th>
+                    <th width = "150" height = "20">支払い状況</th>
                     <th>ID</th>
                     <th>テナントNo.</th>
                     <th>名前</th>
@@ -22,15 +22,31 @@
                 <tr>
                     <td>
                         {{-- 入金済ボタンのフォーム --}}
-                        {!! Form::open(['route' => ['residents.delinquent', $resident->id]]) !!}
-                            {!! Form::submit('入金済', ['class' => "btn btn-success btn-sm"]) !!}
-                        {!! Form::close() !!}                        
+                        @include('delinquents.delinquent_button')         
                     </td>
                     <td>{!! link_to_route('residents.show', $resident->id, ['resident' => $resident->id]) !!}</td>
-                    <td>{{ $resident->tenant_number }}</td>
-                    <td width="150"height="20">{{ $resident->resident_name }}</td>
-                    <td>{{ $resident->tel }}</td>
-                    <td>{{ $resident->content }}</td>
+                    <td width = "300px"><input id="copyTarget_{{$resident->id}}" type="text" value={{ $resident->tenant_number }} readonly>
+                        <button onclick="copyToClipboard_{{$resident->id}}()"><i class="fas fa-clipboard"></i></button>
+                            <script>
+                                function copyToClipboard_{{$resident->id}}() {
+                                var copyTarget = document.getElementById("copyTarget_{{$resident->id}}");
+                                copyTarget.select();
+                                document.execCommand("Copy");
+                                alert("コピーできました！ : " + copyTarget.value);
+                                }
+                            </script></td>
+                    <td width = "150">{{ $resident->resident_name }}</td>
+                    <td width = "300px"><input id="copy_tel_{{$resident->id}}" type="text" value={{ $resident->tel }}  readonly>
+                        <button onclick="copy_tel_ToClipboard_{{$resident->id}}()"><i class="fas fa-clipboard"></i></button>
+                            <script>
+                                function copy_tel_ToClipboard_{{$resident->id}}() {
+                                var copyTarget = document.getElementById("copy_tel_{{$resident->id}}");
+                                copyTarget.select();
+                                document.execCommand("Copy");
+                                alert("コピーできました！ : " + copyTarget.value);
+                                }
+                            </script></td>
+                    <td width = "800px">{{ $resident->content }}</td>
                 </tr>
                 @endforeach
             </tbody>
