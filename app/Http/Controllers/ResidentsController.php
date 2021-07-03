@@ -20,7 +20,7 @@ class ResidentsController extends Controller
         if (\Auth::check()) {
             $user = \Auth::user();
             $residents = $user->residents()->orderBy('created_at')->paginate(10);
-            
+            // dd($residents->currentPage());
             $data = [
                 'residents' => $residents,
                 ];
@@ -173,7 +173,8 @@ class ResidentsController extends Controller
         $resident->is_delinquented = true;
         $resident->save();
         
-        return redirect('/');
+        // return redirect('/');
+        return back()->withInput();
     }
     
     
@@ -183,6 +184,7 @@ class ResidentsController extends Controller
         $resident->is_delinquented = false;
         $resident->save();
         
-        return redirect('/delinquents');
+        // return redirect('/delinquents');
+        return back()->withInput();
     }
 }

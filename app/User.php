@@ -59,6 +59,8 @@ class User extends Authenticatable
     // 滞納者かどうかを確認するためのメソッド
     public function is_delinquented($id)
     {
+        // $exist = $this->is_delinquented($id);
+        
         // ここでデータベースから滞納者かどうかを取得する
         // 複数条件文
         $exists = $this->delinquents()

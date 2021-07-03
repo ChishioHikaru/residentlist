@@ -9,7 +9,7 @@
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th width = "150" height = "20">支払い状況</th>
+                    <th width = "150">支払い状況</th>
                     <th>ID</th>
                     <th>テナントNo.</th>
                     <th>名前</th>

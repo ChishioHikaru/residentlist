@@ -8,7 +8,7 @@
     @else
         <div class="center jumbotron">
             <div class="text-center">
-                <h1>入居者リスト</h1>
+                <h1>入居者管理アプリ</h1>
             </div>
         </div>
         <br>
