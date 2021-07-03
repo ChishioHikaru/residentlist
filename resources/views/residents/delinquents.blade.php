@@ -35,7 +35,7 @@
                                 alert("コピーできました！ : " + copyTarget.value);
                                 }
                             </script></td>
-                    <td width = "150">{{ $resident->resident_name }}</td>
+                    <td width = "300">{{ $resident->resident_name }}</td>
                     <td width = "300px"><input id="copy_tel_{{$resident->id}}" type="text" value={{ $resident->tel }}  readonly>
                         <button onclick="copy_tel_ToClipboard_{{$resident->id}}()"><i class="fas fa-clipboard"></i></button>
                             <script>
