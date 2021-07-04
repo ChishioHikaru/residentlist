@@ -61,7 +61,7 @@ class User extends Authenticatable
     {
         // $exist = $this->is_delinquented($id);
         
-        // ここでデータベースから滞納者かどうかを取得する
+        // データベースから滞納者かどうかを取得する
         // 複数条件文
         $exists = $this->delinquents()
                         ->where('id', $id)

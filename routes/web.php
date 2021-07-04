@@ -21,9 +21,9 @@ Route::post('login', 'Auth\LoginController@login')->name('login.post');
 Route::get('logout', 'Auth\LoginController@logout')->name('logout.get');
 
 // TwitterログインURL
-Route::get('auth/twitter', 'Auth\LoginController@redirectToProvider')->name('login.twitter');
+//Route::get('auth/twitter', 'Auth\LoginController@redirectToProvider')->name('login.twitter');
 // TwitterコールバックURL
-Route::get('auth/twitter/callback', 'Auth\LoginController@handleProviderCallback');
+//Route::get('auth/twitter/callback', 'Auth\LoginController@handleProviderCallback');
 // TwitterログアウトURL
 //Route::get('auth/twitter/logout', 'Auth\LoginController@logout');
 
