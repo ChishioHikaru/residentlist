@@ -46,18 +46,20 @@ class LoginController extends Controller
      * 
      * @return \Illuminate\Http\Response
      */
-    public function redirectToProvider()
+    public function redirectToTwitterProvider()
     {
         return Socialite::driver('twitter')->redirect();
     }
+    
+    
     
     /**
      * Twitterからユーザー情報を取得
      * 
      * @return \Illuminate\Http\Response
      */
-     public function handleProviderCallback()
-     {
+    public function handleProviderCallback()
+    {
         try{
             $user = Socialite::driver('twitter')->user();
             $socialUser = User::firstOrCreate([
@@ -74,6 +76,29 @@ class LoginController extends Controller
         }
         
         return redirect()->route('residents.index');
-     }
+    }
+     
+    
+    /**
+     * Twitterからユーザー情報を取得
+     * 
+     * @return \Illuminate\Http\Response
+     */
+    public function handleTwitterProviderCallback(){
+
+       try {
+           $user = Socialite::with("twitter")->user();
+       } 
+       catch (\Exception $e) {
+           return redirect('/login')->with('oauth_error', 'ログインに失敗しました');
+           // エラーならログイン画面へ転送
+       }
+       
+       $myinfo = User::firstOrCreate(['token' => $user->token ],
+                 ['name' => $user->nickname,'email' => $user->getEmail()]);
+                 Auth::login($myinfo);
+                 return redirect()->to('/'); // homeへ転送
+    
+    }
 }
 

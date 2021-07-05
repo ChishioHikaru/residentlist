@@ -13,10 +13,16 @@
         </div>
         <br>
         <div class="text-center">
-            {{-- ユーザ登録ページへのリンク --}}
-            {!! link_to_route('signup.get', 'ユーザー登録', [], ['class' => 'btn btn-lg btn-primary']) !!}<br>
-            <br>
-            {!! link_to_route('login', 'ログイン', [], ['class' => 'btn btn-lg btn-primary']) !!}
+            <div style="margin-bottom:10px;">
+                {{-- ユーザ登録ページへのリンク --}}
+                {!! link_to_route('signup.get', 'ユーザー登録', [], ['class' => 'btn btn-lg btn-primary']) !!}<br>
+            </div>
+            <div style="margin-bottom:10px;">
+                {!! link_to_route('login', 'ログイン', [], ['class' => 'btn btn-lg btn-primary']) !!}
+            </div style="margin-bottom:10px;">
+            <div>
+                {!! link_to_route('login.twitter', 'Twitterログイン', [], ['class' => 'btn btn-lg btn-primary']) !!}
+            </div>
         </div>
       　<br>
 　　　　<br>

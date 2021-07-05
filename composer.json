@@ -41,6 +41,12 @@
         "classmap": [
             "database/seeds",
             "database/factories"
+        ],
+         "exclude-from-classmap": [
+            "vendor\\league\\oauth1-client\\src\\Signature\\EncodesUrl.php"
+        ],
+        "files":[
+            "app\\VendorOverrides\\EncodesUrl.php"
         ]
     },
     "autoload-dev": {

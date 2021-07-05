@@ -20,12 +20,11 @@ Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('login', 'Auth\LoginController@login')->name('login.post');
 Route::get('logout', 'Auth\LoginController@logout')->name('logout.get');
 
-// TwitterログインURL
-//Route::get('auth/twitter', 'Auth\LoginController@redirectToProvider')->name('login.twitter');
+
+// Twitter用ログイン
+Route::get('login/twitter', 'Auth\LoginController@redirectToTwitterProvider')->name('login.twitter');
 // TwitterコールバックURL
-//Route::get('auth/twitter/callback', 'Auth\LoginController@handleProviderCallback');
-// TwitterログアウトURL
-//Route::get('auth/twitter/logout', 'Auth\LoginController@logout');
+Route::get('login/twitter/callback', 'Auth\LoginController@handleTwitterProviderCallback');
 
 
 Route::group(['middleware' => ['auth']], function () {
