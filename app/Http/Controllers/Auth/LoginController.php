@@ -53,30 +53,10 @@ class LoginController extends Controller
     
     
     
-    /**
-     * Twitterからユーザー情報を取得
-     * 
-     * @return \Illuminate\Http\Response
-     */
-    public function handleProviderCallback()
-    {
-        try{
-            $user = Socialite::driver('twitter')->user();
-            $socialUser = User::firstOrCreate([
-             'token'     => $user->token,
-            ], [
-                'token'  => $user->token,
-                'name'   => $user->name,
-                'email'  => $user->email,
-                'avatar' => $user->avatar_original,
-            ]);
-            Auth::login($socialUser, true);
-        } catch (Exception $e) {
-            return redirect()->route('login');
-        }
+    
         
-        return redirect()->route('residents.index');
-    }
+        
+    
      
     
     /**
@@ -97,6 +77,7 @@ class LoginController extends Controller
        $myinfo = User::firstOrCreate(['token' => $user->token ],
                  ['name' => $user->nickname,'email' => $user->getEmail()]);
                  Auth::login($myinfo);
+                 //return redirect()->route('residents.index');
                  return redirect()->to('/'); // homeへ転送
     
     }
