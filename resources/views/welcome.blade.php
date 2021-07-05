@@ -21,7 +21,7 @@
                 {!! link_to_route('login', 'ログイン', [], ['class' => 'btn btn-lg btn-primary']) !!}
             </div style="margin-bottom:10px;">
             <div>
-                {{--!! link_to_route('login.twitter', 'Twitterログイン', [], ['class' => 'btn btn-lg btn-primary']) !!--}}
+                {{--link_to_route('login.twitter', 'Twitterログイン', [], ['class' => 'btn btn-lg btn-primary']) --}}
                 <a href="{{ route('login.twitter') }}"><i class="fab fa-twitter"></i> Twitterでログイン</a>
             </div>
         </div>

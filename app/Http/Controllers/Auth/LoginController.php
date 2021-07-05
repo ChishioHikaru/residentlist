@@ -53,12 +53,6 @@ class LoginController extends Controller
     
     
     
-    
-        
-        
-    
-     
-    
     /**
      * Twitterからユーザー情報を取得
      * 
