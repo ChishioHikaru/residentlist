@@ -7,7 +7,7 @@
             <thead>
                 <tr>
                     <th width = "150px">支払い状況</th>
-                    <th>ID</th>
+                    <th width = "100px">編集</th>
                     <th>テナントNo.</th>
                     <th>名前</th>
                     <th>電話番号</th>
@@ -21,7 +21,7 @@
                         @include('delinquents.delinquent_button')               
                     </td>
                     <td>{!! link_to_route('residents.show', $resident->id, ['resident' => $resident->id]) !!}</td>
-                    <td width= "400px"><input id="copyTarget_{{$resident->id}}" type="text" value={{ $resident->tenant_number }} readonly>
+                    <td width = "400px"><input id="copyTarget_{{$resident->id}}" type="text" value={{ $resident->tenant_number }} readonly>
                         <button onclick="copyToClipboard_{{$resident->id}}()"><i class="fas fa-clipboard"></i></button>
                             <script>
                                 function copyToClipboard_{{$resident->id}}() {
