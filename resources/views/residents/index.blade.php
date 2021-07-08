@@ -6,7 +6,7 @@
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th width = "150px">支払い状況</th>
+                    <th width = "200px">支払い状況</th>
                     <th width = "100px">編集</th>
                     <th>テナントNo.</th>
                     <th>名前</th>
