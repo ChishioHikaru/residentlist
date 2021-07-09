@@ -51,9 +51,9 @@ class ResidentsController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'tenant_number' => 'required|max:8',
+            'tenant_number' => 'required|digits_between:1,8|numeric',
             'resident_name' => 'required|max:20',
-            'tel' => 'required|max:14',
+            'tel' => 'required|digits_between:1,12|numeric',
         ]);
         
         
@@ -117,9 +117,9 @@ class ResidentsController extends Controller
     {
    
         $request->validate([
-            'tenant_number' => 'required|max:8',
+            'tenant_number' => 'required|digits_between:1,8|numeric',
             'resident_name' => 'required|max:20',
-            'tel' => 'required|max:14',
+            'tel' => 'required|digits_between:1,12|numeric',
         ]);
         
         $resident = Resident::findOrFail($id);
